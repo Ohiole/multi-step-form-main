@@ -28,7 +28,7 @@ main{
 .sidebar .navNum {
   position: absolute;
   top: 0;
-  padding: 1rem 2.5rem;
+  padding: 0.5rem 2.5rem;
 }
 .sidebar .navNum .eachNum {
   display: flex;
@@ -577,11 +577,13 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    position: relative;
   }
   .sidebar .mobile {
     display: inline-block;
-    width: 100vw;
-    position: absolute;
+    width: 100%;
+    position: relative;
     top: 0;
     left: 0;
   }
@@ -590,13 +592,13 @@ main{
   }
   .sidebar .navNum {
     padding: 0;
-    display: flex;
-    position: fixed;
-    left: 50%;
-    transform: translate(-50%);
-    margin-top: 2rem;
     z-index: 100;
-    gap: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    gap: 1em;
+    top: 0;
   }
   .sidebar .navNum .stepAndName {
     display: none;
@@ -620,6 +622,9 @@ main{
   }
 }
 @media screen and (max-width: 565px) {
+  .sidebar .navNum{
+    left: 20%;
+  }
   .form {
     width: 90%;
     height: 70%;
@@ -650,7 +655,10 @@ main{
 @media screen and (max-width: 400px) {
   .form {
     padding: 1rem;
-    bottom: 70px;
+    bottom: 90px;
+  }
+  .sidebar .navNum{
+    left: 15%;
   }
 }
 
@@ -659,6 +667,9 @@ main{
     height: 90px;
     padding: 0.3rem;
   }
+  .sidebar .navNum{
+    left: 10%;
+  }
 }
 
 @media screen and (max-width: 290px) {
@@ -666,7 +677,8 @@ main{
     bottom: 150px;
   }
   .sidebar .navNum {
-    top: -5%;
+    top: 0%;
+    left: 5%;
     gap: 0.5rem;
   }
   .form .selectPlan .cardsAndToggle .toggleBtn {
