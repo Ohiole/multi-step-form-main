@@ -1,38 +1,674 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.App{
+  width: 100%;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+main{
+  background-color: hsl(0, 0%, 100%);
+  height: 600px;
+  width: 800px;
+  min-width: 650px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.sidebar{
+  position: relative;
+}
+
+.sidebar .mobile {
+  display: none;
+}
+.sidebar .navNum {
+  position: absolute;
+  top: 0;
+  padding: 1rem 2.5rem;
+}
+.sidebar .navNum .eachNum {
+  display: flex;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+.sidebar .navNum .eachNum .boldNum {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background-color: transparent;
+  border: 1px solid hsl(0, 0%, 100%);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: hsl(0, 0%, 100%);
+}
+.sidebar .navNum .eachNum .boldNum.active {
+  background-color: hsl(206, 94%, 87%);
+  color: hsl(213, 96%, 18%);
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+.sidebar .navNum .eachNum .stepAndName {
+  margin-left: 1rem;
+  line-height: 1.2;
+}
+.sidebar .navNum .eachNum .stepAndName .step {
+  font-size: 0.75rem;
+  color: hsl(228, 100%, 84%);
+}
+.sidebar .navNum .eachNum .stepAndName .stepName {
+  font-size: 0.875rem;
+  color: hsl(0, 0%, 100%);
+  font-weight: 500;
+  letter-spacing: 0.15em;
+}
+
+.form {
+  width: 100%;
+  padding: 3rem 4rem;
+}
+.form .personalInfo {
+  width: 100%;
+  height: 100%;
+  transition: all 0.45s ease-in-out;
+  display: block;
+}
+.form .personalInfo.active{
+  display: none;
+}
+.form .personalInfo header h1 {
+  color: hsl(213, 96%, 18%);
+  letter-spacing: 0.01em;
+  font-size: 1.75rem;
+  line-height: 1.3;
+}
+.form .personalInfo header p {
+  width: 100%;
+  color: hsl(231, 11%, 63%);
+  font-size: 0.85rem;
+}
+.form .personalInfo .personalInputs {
+  margin-top: 3rem;
+  width: 100%;
+}
+.form .personalInfo .personalInputs .inputs {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+.form .personalInfo .personalInputs .inputs label {
+  font-size: 0.85rem;
+  color: hsl(213, 96%, 18%);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  display: flex;
+  justify-content: space-between;
+}
+.form .personalInfo .personalInputs .inputs label span {
+  color: hsl(354, 84%, 57%);
+  font-weight: 600;
+  opacity: 1;
+}
+.form .personalInfo .personalInputs .inputs input {
+  width: 100%;
+  height: 40px;
+  padding: 0 1rem;
+  color: hsl(213, 96%, 18%);
+  font-weight: 600;
+  border: 1px solid hsl(229, 24%, 87%);
+  border-radius: 5px;
+  outline: none;
+}
+.form .personalInfo .personalInputs .inputs input:focus {
+  border: 1px solid hsl(213, 96%, 18%);
+}
+.form .personalInfo .personalInputs .inputs input::-moz-placeholder {
+  color: hsl(231, 11%, 63%);
+  font-weight: 500;
+  font-family: 'Ubuntu';
+}
+.form .personalInfo .personalInputs .inputs input::placeholder {
+  color: hsl(231, 11%, 63%);
+  font-weight: 500;
+  font-family: 'Ubuntu';
+}
+.form .personalInfo .personalInputs .inputs .inputBox.errorInp {
+  border: 1px solid hsl(354, 84%, 57%);
+  transition: border 0.25s ease-in-out;
+}
+.form .personalInfo .personalInputs .inputs .inputBox.errorInp:focus {
+  border: 1px solid hsl(213, 96%, 18%);
+}
+.form .personalInfo .nextBtn {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+}
+.form .personalInfo .nextBtn button {
+  background-color: hsl(213, 96%, 18%);
+  color: hsl(0, 0%, 100%);
+  width: 120px;
+  border: none;
+  border-radius: 5px;
+  height: 45px;
+  cursor: pointer;
+}
+.form .personalInfo .nextBtn button:hover {
+  background-color: hsl(213, 97%, 28%);
+  transition: all 0.2s ease;
+}
+
+.form .selectPlan {
+  width: 100%;
+  height: 100%;
+  transition: all 0.45s ease-in-out;
+  display: none;
+}
+
+.form .selectPlan.active{
+  display: block;
+  transition: all 0.45s ease-in-out;
+}
+.form .selectPlan header h1 {
+  color: hsl(213, 96%, 18%);
+  letter-spacing: 0.01em;
+  font-size: 1.75rem;
+  line-height: 1.3;
+}
+.form .selectPlan header p {
+  width: 100%;
+  color: hsl(231, 11%, 63%);
+  font-size: 0.85rem;
+}
+.form .selectPlan .cardsAndToggle {
+  margin-top: 3rem;
+  width: 100%;
+}
+.form .selectPlan .cardsAndToggle .cards {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+}
+.form .selectPlan .cardsAndToggle .cards .card {
+  border: 1px solid hsl(229, 24%, 87%);
+  border-radius: 5px;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  width: 130px;
+  padding: 1rem;
+}
+.form .selectPlan .cardsAndToggle .cards .card .text {
+  margin-top: 2.5rem;
+}
+.form .selectPlan .cardsAndToggle .cards .card .text h2 {
+  font-size: 1rem;
+  color: hsl(213, 96%, 18%);
+  line-height: 1.2;
+  font-weight: 500;
+}
+.form .selectPlan .cardsAndToggle .cards .card .text p {
+  font-size: 0.8rem;
+  color: hsl(231, 11%, 63%);
+  margin-top: 0.25rem;
+}
+.form .selectPlan .cardsAndToggle .cards .card .text .extraText {
+  color: hsl(213, 96%, 18%);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: none;
+}
+.form .selectPlan .cardsAndToggle .cards .card .text .extraText.active {
+  display: block;
+}
+.form .selectPlan .cardsAndToggle .cards .card:hover {
+  border: 1px solid hsl(213, 96%, 18%);
+  transition: border 0.25s ease-out;
+}
+.form .selectPlan .cardsAndToggle .cards .card.active {
+  background-color: hsl(217, 100%, 97%);
+  border: 1px solid hsl(213, 96%, 18%);
+  transition: background-color border 0.25s ease-in-out;
+}
+.form .selectPlan .cardsAndToggle .toggleBtn {
+  background-color: hsl(217, 100%, 97%);
+  border-radius: 5px;
+  padding: 0.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  margin-top: 1rem;
+}
+.form .selectPlan .cardsAndToggle .toggleBtn p {
+  color: hsl(231, 11%, 63%);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.form .selectPlan .cardsAndToggle .toggleBtn p.active {
+  color: hsl(213, 96%, 18%);
+}
+.form .selectPlan .selectBtns {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.form .selectPlan .selectBtns p {
+  color: hsl(231, 11%, 63%);
+  cursor: pointer;
+}
+.form .selectPlan .selectBtns p:hover {
+  color: hsl(213, 96%, 18%);
+  transition: all 0.25s ease-in-out;
+}
+.form .selectPlan .selectBtns button {
+  background-color: hsl(213, 96%, 18%);
+  color: hsl(0, 0%, 100%);
+  width: 120px;
+  border: none;
+  border-radius: 5px;
+  height: 45px;
+  cursor: pointer;
+}
+.form .selectPlan .selectBtns button:hover {
+  background-color: hsl(213, 97%, 28%);
+  transition: all 0.2s ease;
+}
+.switch {
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  background-color: hsl(213, 96%, 18%);
+  position: relative;
+  border-radius: 25px;
+  cursor: pointer;
+}
+.switch input {
+  opacity: 0;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+}
+.slider {
+  display: block;
+  cursor: pointer;
+}
+.slider:before {
+  content: "";
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: hsl(0, 0%, 100%);
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  transition: all 0.25s ease-in-out;
+}
+.switch input:checked + .slider:before {
+  transform: translateX(18px);
+}
+
+.form .pickAddOns {
+  width: 100%;
+  height: 100%;
+  display: none;
+  transition: all 0.45s ease-in-out;
+}
+.form .pickAddOns header h1 {
+  color: hsl(213, 96%, 18%);
+  letter-spacing: 0.01em;
+  font-size: 1.75rem;
+  line-height: 1.3;
+}
+.form .pickAddOns header p {
+  width: 100%;
+  color: hsl(231, 11%, 63%);
+  font-size: 0.85rem;
+}
+.form .pickAddOns .checkboxes {
+  margin-top: 3rem;
+  width: 100%;
+}
+.form .pickAddOns .checkboxes .checkbox {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  align-items: center;
+  border: 1px solid hsl(229, 24%, 87%);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.form .pickAddOns .checkboxes .checkbox:hover {
+  border: 1px solid hsl(213, 96%, 18%);
+  transition: all 0.25s ease-in-out;
+}
+
+.form .pickAddOns .checkboxes .checkbox.clicked{
+  background-color: hsl(217, 100%, 97%);
+  border: 1px solid hsl(213, 96%, 18%);
+  transition: background-color border 0.25s ease-in-out;
+}
+.form .pickAddOns .checkboxes .checkbox .textAndInp {
+  display: flex;
+}
+.form .pickAddOns .checkboxes .checkbox .textAndInp .text {
+  margin-left: 1rem;
+}
+.form .pickAddOns .checkboxes .checkbox .textAndInp .text h3 {
+  font-size: 0.9rem;
+  color: hsl(213, 96%, 18%);
+}
+.form .pickAddOns .checkboxes .checkbox .textAndInp .text p {
+  font-size: 0.8rem;
+  color: hsl(231, 11%, 63%);
+}
+.form .pickAddOns .checkboxes .checkbox p {
+  font-size: 0.85rem;
+  color: hsl(243, 100%, 62%);
+}
+.form .pickAddOns .selectBtns {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.form .pickAddOns .selectBtns p {
+  color: hsl(231, 11%, 63%);
+  cursor: pointer;
+}
+.form .pickAddOns .selectBtns p:hover {
+  color: hsl(213, 96%, 18%);
+  transition: all 0.25s ease-in-out;
+}
+.form .pickAddOns .selectBtns button {
+  background-color: hsl(213, 96%, 18%);
+  color: hsl(0, 0%, 100%);
+  width: 120px;
+  border: none;
+  border-radius: 5px;
+  height: 45px;
+  cursor: pointer;
+}
+.form .pickAddOns .selectBtns button:hover {
+  background-color: hsl(213, 97%, 28%);
+  transition: all 0.2s ease;
+}
+.form .pickAddOns.active {
+  display: block;
+}
+
+.form .finishing {
+  width: 100%;
+  height: 100%;
+  display: none;
+  transition: all 0.45s ease-in-out;
+}
+.form .finishing header h1 {
+  color: hsl(213, 96%, 18%);
+  letter-spacing: 0.01em;
+  font-size: 1.75rem;
+  line-height: 1.3;
+}
+.form .finishing header p {
+  width: 100%;
+  color: hsl(231, 11%, 63%);
+  font-size: 0.85rem;
+}
+.form .finishing .summary {
+  margin-top: 2rem;
+  width: 100%;
+}
+.form .finishing .summary .mainBox {
+  background-color: hsl(217, 100%, 97%);
+  padding: 1.5rem 1rem;
+  border-radius: 10px;
+}
+.form .finishing .summary .mainBox .topHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid hsl(229, 24%, 87%);
+  padding-bottom: 1rem;
+}
+.form .finishing .summary .mainBox .topHead .leftTop .heading {
+  display: flex;
+  gap: 0.2em;
+}
+.form .finishing .summary .mainBox .topHead .leftTop .heading h4, .form .finishing .summary .mainBox .topHead .leftTop .heading .summaryTime {
+  font-size: 0.875rem;
+  color: hsl(213, 96%, 18%);
+  font-weight: 500;
+}
+.form .finishing .summary .mainBox .topHead .leftTop p {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  text-decoration: underline;
+  color: hsl(231, 11%, 63%);
+  cursor: pointer;
+}
+.form .finishing .summary .mainBox .topHead .leftTop p:hover {
+  color: hsl(243, 100%, 62%);
+  font-weight: 500;
+  transition: all 0.25s ease-in-out;
+}
+.form .finishing .summary .mainBox .topHead .priceIndex {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: hsl(213, 96%, 18%);
+}
+.form .finishing .summary .mainBox .mainBody {
+  margin-top: 1rem;
+  width: 100%;
+}
+.form .finishing .summary .mainBox .mainBody .line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.form .finishing .summary .mainBox .mainBody .line .addOnTag {
+  font-size: 0.75rem;
+  color: hsl(231, 11%, 63%);
+}
+.form .finishing .summary .mainBox .mainBody .line .priceAdd{
+  font-size: 0.75rem;
+  color: hsl(213, 96%, 18%);
+}
+
+.form .finishing .summary .total {
+  margin-top: 1rem;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form .finishing .summary .total .totalText {
+  font-size: 0.75rem;
+  color: hsl(231, 11%, 63%);
+}
+.form .finishing .summary .total .finishedCost {
+  font-weight: 600;
+  color: hsl(243, 100%, 62%);
+}
+.form .finishing .selectBtns {
+  margin-top: 7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.form .finishing .selectBtns p {
+  color: hsl(231, 11%, 63%);
+  cursor: pointer;
+}
+.form .finishing .selectBtns p:hover {
+  color: hsl(213, 96%, 18%);
+  transition: all 0.25s ease-in-out;
+}
+.form .finishing .selectBtns button {
+  background-color: hsl(243, 100%, 62%);
+  color: hsl(0, 0%, 100%);
+  width: 120px;
+  border: none;
+  border-radius: 5px;
+  height: 45px;
+  cursor: pointer;
+}
+.form .finishing .selectBtns button:hover {
+  background-color: hsl(228, 100%, 84%);
+  transition: all 0.2s ease;
+}
+.form .finishing.active {
+  display: block;
+}
+
+.form .lastPage {
+  width: 100%;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5em;
+  transition: all 0.45s ease-in-out;
+}
+.form .lastPage h3 {
+  color: hsl(213, 96%, 18%);
+  font-size: 2rem;
+}
+.form .lastPage p {
+  color: hsl(231, 11%, 63%);
+  font-size: 0.815rem;
+  text-align: center;
+  width: 100%;
+}
+.form .lastPage.active {
+  display: flex;
+}
+
+@media screen and (max-width: 800px) {
+  .App {
+    align-items: unset;
+    justify-content: unset;
+    overflow: hidden;
   }
-  to {
-    transform: rotate(360deg);
+  main {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    padding: 0;
+    background-color: hsl(217, 100%, 97%);
+  }
+  .sidebar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .sidebar .mobile {
+    display: inline-block;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .sidebar .desktop {
+    display: none;
+  }
+  .sidebar .navNum {
+    padding: 0;
+    display: flex;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%);
+    margin-top: 2rem;
+    z-index: 100;
+    gap: 2rem;
+  }
+  .sidebar .navNum .stepAndName {
+    display: none;
+  }
+  .form {
+    width: 80%;
+    height: 65%;
+    background-color: #fff;
+    position: absolute;
+    bottom: 100px;
+    left: 10%;
+    border-radius: 15px;
+    padding: 1rem 2rem;
+  }
+  .nextBtn, .selectBtns {
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 1rem 2rem;
+  }
+}
+@media screen and (max-width: 565px) {
+  .form {
+    width: 90%;
+    height: 70%;
+    left: 5%;
+    border-radius: 15px;
+  }
+  .form .selectPlan .cardsAndToggle {
+    margin-top: 1rem;
+  }
+  .form .selectPlan .cardsAndToggle .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
+  }
+  .form .selectPlan .cardsAndToggle .cards .card {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+  }
+  .form .selectPlan .cardsAndToggle .cards .card .text {
+    margin-top: 0;
+  }
+}
+
+
+@media screen and (max-width: 400px) {
+  .form {
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 315px) {
+  .form .pickAddOns .checkboxes .checkbox {
+    height: 90px;
+    padding: 0.3rem;
+  }
+}
+
+@media screen and (max-width: 290px) {
+  .form {
+    bottom: 150px;
+  }
+  .sidebar .navNum {
+    top: -5%;
+    gap: 0.5rem;
+  }
+  .form .selectPlan .cardsAndToggle .toggleBtn {
+   flex-direction: column;
   }
 }
