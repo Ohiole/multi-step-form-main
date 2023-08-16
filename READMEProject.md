@@ -35,11 +35,12 @@ Users should be able to:
   - A step is submitted, but no selection has been made
 
 ### Screenshot
+![Screenshot (180)](https://github.com/Ohiole/multi-step-form-main/assets/67792211/557db1c5-c2cf-4ebf-9045-0e71d4b3b227)
 
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL:(https://github.com/Ohiole/multi-step-form-main/tree/main)
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
 ## My process
